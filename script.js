@@ -7,6 +7,7 @@ const scissorsButton = document.querySelector('.scissors');
 const result = document.querySelector('.result');
 const spanPlayer = document.querySelector(".plaScore");
 const spanComp= document.querySelector('.comScore');
+const delate = document.querySelector('.btn-restart');
 
    
 //event
@@ -36,6 +37,11 @@ scissorsButton.addEventListener('click', ()=>{
     runScore(playerScore, computerScore);
 });
 
+function reset(index){
+    container.splice(index, 1)
+}reset()
+
+
 
 //to check computer choice
 function getComputerChoice(){
@@ -57,9 +63,8 @@ function playRound(playerSelection, ComputerSelection){
         console.log('Tie');
         const p = document.createElement('p');
         p.textContent =("it's a Tie");
+        p.setAttribute('id','tie')
         result.appendChild(p);
-
-
     }
     else if( (playerSelection === "rock" && ComputerSelection === "scissors") ||
             (playerSelection === "scissors" && ComputerSelection ==="paper") || 
@@ -67,15 +72,25 @@ function playRound(playerSelection, ComputerSelection){
         {
         console.log(`you win! ${playerSelection} beats ${ComputerSelection}`);
         const p = document.createElement('p');
-        p.textContent =(`you win! ${playerSelection} beats ${ComputerSelection}`)
+        p.textContent = (`you win! ${playerSelection} beats ${ComputerSelection}`)
+        p.setAttribute('id','win')
         result.appendChild(p);
         playerScore++;
+        delate.addEventListener('click', ()=>{
+            playerScore=0
+            spanPlayer.textContent=`Player score: ${playerScore}`
+        })
     }else{
         console.log(`you lose! ${ComputerSelection} beats ${playerSelection}`);
         const p = document.createElement('p');
         p.textContent =(`you lose! ${ComputerSelection} beats ${playerSelection}`)
+        p.setAttribute('id','loss')
         result.appendChild(p);
         computerScore++;
+        delate.addEventListener('click', ()=>{
+            computerScore= 0  
+            spanComp.textContent=`Computer score: ${computerScore}`
+        })
     };
 }playRound();
 
@@ -84,11 +99,11 @@ function playRound(playerSelection, ComputerSelection){
 //to check how many times of who wins
 
 function runScore(playerScore, computerScore){
-    console.log(playerScore, computerScore)
     if(playerScore === 5){
         const h2 = document.createElement('h2');
         h2.classList.add('header-player');
         h2.innerText = `You won ${playerScore} to ${computerScore}. Great job you beat Computer`;
+        h2.setAttribute('id','win')
         result.append(h2)
         playerScore++
     }
@@ -96,9 +111,17 @@ function runScore(playerScore, computerScore){
         const h2 = document.createElement('h2');
         h2.classList.add('header-computer');
         h2.innerHTML = `You lost ${playerScore} to ${computerScore}. try again next time`;
+        p.setAttribute('id','loss')
         console.log('hey');
         result.append(h2)
         computerScore++
     }
-}runScore()
+    delate.addEventListener('click', (nu)=>{
+        nu=''
+        result.innerHTML=nu
+    })
+}
+
+
+
 

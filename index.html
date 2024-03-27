@@ -4,19 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-paper-scissors</title>
-    
+    <script src="https://kit.fontawesome.com/03d21647f0.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            margin: 20px auto;
+            text-align: center;
+            width: 100%;
+            background-color: #fde68a;
+        }
+        .full{
+            background-color: #fbbf24;
+            color: #fff;
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+        }
+        .full > h2{
+            padding: 10px;
+        }
+        button{
+            border:  none;
+            background-color: #fff;
+            color: #fbbf24;
+            padding:5px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 10px;
+        }
+        .result{
+            text-align: left;
+            margin: auto;
+            width: 60%;
+        }
+        .result> p{
+            padding: 10px;
+        }
+        #tie{
+            color: #1d4ed8;
+        }
+        #win{
+            color: green;
+        }
+        #loss{
+            color: red;
+        }
+        .btn{
+            width: 30%;
+            font-weight: bold;
+        }
+        .rock, .paper, .scissors{
+            text-align: center;
+            height: 50px;
+        }
+        i{
+            font-size: 20px;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
+   <div class="full">
+    <h2>Rock-Paper-Scissors</h2>
+    <p>Best out of 5</p>
     <div class="runScore">
         <span class="plaScore"></span>
         <span class="comScore"></span>
     </div>
+
     <div class="container">
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
+        <button class="rock">Rock<br><i class="fa-solid fa-hand-fist"></i></button>
+        <button class="paper">Paper<br><i class="fa-solid fa-hand"></i></button>
+        <button class="scissors">Scissors<br><i class="fa-solid fa-hand-peace"></i></button>
     </div>
+
     <div class="result"></div>
+        <button class="btn-restart">restart</button>
+   </div>
+   
 </body>
 <script src="./script.js"></script>
 </html>
