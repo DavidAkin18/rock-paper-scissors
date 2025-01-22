@@ -6,94 +6,182 @@
     <title>Rock-paper-scissors</title>
     <script src="https://kit.fontawesome.com/03d21647f0.js" crossorigin="anonymous"></script>
     <style>
-        *{
+        /* Reset styles */
+        * {
             box-sizing: border-box;
             padding: 0;
             margin: 0;
+            font-family: 'Arial', sans-serif;
         }
-        body{
-            margin: 20px auto;
+
+        /* Body Styling */
+        body {
             text-align: center;
-            width: 100%;
-            background-color: #fde68a;
-        }
-        .full{
-            background-color: #fbbf24;
+            background: linear-gradient(135deg, #FFB85C, #FF7E5F);
             color: #fff;
-            width: 60%;
-            margin: auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
-        .full > h2{
-            padding: 10px;
+
+        /* Container Styling */
+        .full {
+            background: #ffffff15;
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
         }
-        button{
-            border:  none;
-            background-color: #fff;
-            color: #fbbf24;
-            padding:5px 15px;
-            border-radius: 10px;
+
+        .full > h2 {
+            font-size: 2rem;
             font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .full > p {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons Styling */
+        button {
+            background: #FFD700;
+            border: none;
+            color: #FF4500;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: scale(0.98);
+            box-shadow: none;
+        }
+
+        /* Rock, Paper, Scissors Buttons */
+        .container button {
+            background: #FFFFFF25;
+            color: #FFD700;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             margin: 10px;
         }
-        .result{
-            text-align: left;
-            margin: auto;
-            width: 60%;
+
+        .container i {
+            font-size: 2rem;
         }
-        .result> p{
-            padding: 10px;
-        }
-        #tie{
-            color: #1d4ed8;
-        }
-        #win{
-            color: green;
-        }
-        #loss{
-            color: red;
-        }
-        .btn{
-            width: 30%;
+
+        /* Result Display Styling */
+        .result {
+            background: #ffffff10;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1.2rem;
             font-weight: bold;
         }
-        .rock, .paper, .scissors{
-            text-align: center;
-            height: 50px;
+
+        .result p {
+            margin: 5px 0;
         }
-        i{
-            font-size: 20px;
-            padding: 5px;
+
+        #tie {
+            color: #1E90FF;
         }
-        @media (max-width:450px){
-            body{
-                width: 90%;
+
+        #win {
+            color: #32CD32;
+        }
+
+        #loss {
+            color: #FF4500;
+        }
+
+        /* Restart Button */
+        .btn-restart {
+            margin-top: 20px;
+            background: #FF4500;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-restart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 450px) {
+            body {
+                padding: 10px;
             }
-            .full{
+
+            .full {
                 width: 100%;
+                padding: 20px;
+            }
+
+            .container button {
+                width: 80px;
+                height: 80px;
+                font-size: 0.9rem;
+            }
+
+            .container i {
+                font-size: 1.5rem;
+            }
+
+            button {
+                padding: 8px 15px;
             }
         }
     </style>
 </head>
 <body>
    <div class="full">
-    <h2>Rock-Paper-Scissors</h2>
-    <p>Best out of 5</p>
-    <div class="runScore">
-        <span class="plaScore"></span>
-        <span class="comScore"></span>
-    </div>
+        <h2>Rock-Paper-Scissors</h2>
+        <p>Best out of 5</p>
+        <div class="runScore">
+            <span class="plaScore"></span>
+            <span class="comScore"></span>
+        </div>
 
-    <div class="container">
-        <button class="rock">Rock<br><i class="fa-solid fa-hand-fist"></i></button>
-        <button class="paper">Paper<br><i class="fa-solid fa-hand"></i></button>
-        <button class="scissors">Scissors<br><i class="fa-solid fa-hand-peace"></i></button>
-    </div>
+        <div class="container">
+            <button class="rock">Rock<br><i class="fa-solid fa-hand-fist"></i></button>
+            <button class="paper">Paper<br><i class="fa-solid fa-hand"></i></button>
+            <button class="scissors">Scissors<br><i class="fa-solid fa-hand-peace"></i></button>
+        </div>
 
-    <div class="result"></div>
-        <button class="btn-restart">restart</button>
+        <div class="result"></div>
+        <button class="btn-restart">Restart</button>
    </div>
-   
 </body>
 <script src="./script.js"></script>
 </html>
