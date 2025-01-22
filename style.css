@@ -1,0 +1,231 @@
+/* Reset styles */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+    text-align: center;
+    background: linear-gradient(135deg, #FFB85C, #FF7E5F);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Game Container Styling */
+.full {
+    background: #ffffff15;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Title Styling */
+.full > h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.full > p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Scoreboard Styling */
+.runScore {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.runScore span {
+    width: 50%;
+    text-align: center;
+}
+
+/* Rock, Paper, Scissors Buttons */
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.container button {
+    background: #FFFFFF25;
+    color: #FFD700;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+.container button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
+}
+
+.container button:active {
+    transform: scale(0.95);
+}
+
+.container i {
+    font-size: 2rem;
+}
+
+/* Result Display Styling */
+.result {
+    background: #ffffff10;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Color Coded Result Text */
+.result p {
+    margin: 5px 0;
+}
+
+#tie {
+    color: #1E90FF;
+}
+
+#win {
+    color: #32CD32;
+}
+
+#loss {
+    color: #FF4500;
+}
+
+#info {
+    color: #FFD700;
+}
+
+#end {
+    color: #FF6347;
+}
+
+/* Restart Button */
+.btn-restart {
+    margin-top: 20px;
+    background: #FF6347;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-restart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.5);
+}
+
+.btn-restart:active {
+    transform: scale(0.95);
+}
+
+/* Menu Page Styling (index.html) */
+.menu {
+    background: #ffffff15;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.menu h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.menu button {
+    background: #FFD700;
+    color: #FF4500;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+.menu button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
+}
+
+.menu button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 450px) {
+    body {
+        padding: 10px;
+    }
+
+    .full {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .container button {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8rem;
+    }
+
+    .container i {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .menu button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

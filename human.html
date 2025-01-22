@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="full">
+        <h2>Rock-Paper-Scissors (Player vs Player)</h2>
+        <p>First to 5 wins!</p>
+        <div class="runScore">
+            <span class="plaScore"></span>
+            <span class="comScore"></span>
+        </div>
+
+        <div class="container">
+            <button class="rock">Rock<br><i class="fa-solid fa-hand-fist"></i></button>
+            <button class="paper">Paper<br><i class="fa-solid fa-hand"></i></button>
+            <button class="scissors">Scissors<br><i class="fa-solid fa-hand-peace"></i></button>
+        </div>
+
+        <div class="result"></div>
+        <button class="btn-restart">Restart</button>
+   </div>
+   <script>
+       const container = document.querySelector('.container');
+       const buttons = Array.from(container.querySelectorAll('button'));
+       const result = document.querySelector('.result');
+       const spanPlayer = document.querySelector('.plaScore');
+       const spanComp = document.querySelector('.comScore');
+       const restartButton = document.querySelector('.btn-restart');
+
+       let player1Score = 0;
+       let player2Score = 0;
+       let currentPlayer = 1;
+
+       buttons.forEach(button => {
+           button.addEventListener('click', () => playGame(button.className));
+       });
+
+       restartButton.addEventListener('click', restartGame);
+
+       function playGame(playerSelection) {
+           if (player1Score >= 5 || player2Score >= 5) return;
+
+           const message = `Player ${currentPlayer} chose ${playerSelection}!`;
+           displayResult(message, 'info');
+
+           if (currentPlayer === 1) {
+               currentPlayer = 2;
+               displayResult("Player 2's turn!", 'info');
+           } else {
+               const player1Choice = result.querySelectorAll('p')[0].textContent.split(' ')[2];
+               checkRound(player1Choice, playerSelection);
+               currentPlayer = 1;
+           }
+
+           updateScoreboard();
+           checkGameEnd();
+       }
+
+       function checkRound(choice1, choice2) {
+           if (choice1 === choice2) {
+               displayResult("It's a tie!", 'tie');
+           } else if (
+               (choice1 === 'rock' && choice2 === 'scissors') ||
+               (choice1 === 'paper' && choice2 === 'rock') ||
+               (choice1 === 'scissors' && choice2 === 'paper')
+           ) {
+               displayResult('Player 1 wins the round!', 'win');
+               player1Score++;
+           } else {
+               displayResult('Player 2 wins the round!', 'win');
+               player2Score++;
+           }
+       }
+
+       function updateScoreboard() {
+           spanPlayer.innerText = `Player 1 score: ${player1Score}`;
+           spanComp.innerText = `Player 2 score: ${player2Score}`;
+       }
+
+       function checkGameEnd() {
+           if (player1Score === 3 || player2Score === 3) {
+               const message = player1Score === 5
+                   ? `Player 1 wins ${player1Score} to ${player2Score}!`
+                   : `Player 2 wins ${player2Score} to ${player1Score}!`;
+               displayResult(message, 'end');
+
+               buttons.forEach(button => (button.disabled = true));
+           }
+       }
+
+       function displayResult(message, id) {
+           const p = document.createElement('p');
+           p.textContent = message;
+           p.setAttribute('id', id);
+           result.appendChild(p);
+       }
+
+       function restartGame() {
+           player1Score = 0;
+           player2Score = 0;
+           result.innerHTML = '';
+           updateScoreboard();
+
+           buttons.forEach(button => (button.disabled = false));
+       }
+
+       updateScoreboard();
+   </script>
+</body>
+</html>
